@@ -5,11 +5,11 @@
 
 Webová aplikácia implementuje tri prípady použitia:
 * úroveň obezity v USA
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Úroveň obezity v USA")
+![alt text](https://github.com/n0DruidsH3r3/assignment-gis/blob/master/coloring.png "Úroveň obezity v USA")
 * štatistiky McDonaldov v USA
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Štatistiky McDonaldov v USA")
+![alt text](https://github.com/n0DruidsH3r3/assignment-gis/blob/master/statistics.png "Štatistiky McDonaldov v USA")
 * McDonaldy v častiach Houston Texas
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "McDonaldy v častiach Houston Texas")
+![alt text](https://github.com/n0DruidsH3r3/assignment-gis/blob/master/houston.png "McDonaldy v častiach Houston Texas")
 
 # Frontend
 * na zobrazenie mapy a pridávanie vrstiev je použitý Mapbox
