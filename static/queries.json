@@ -1,0 +1,13 @@
+{
+    "get_huouston_parts":"with polys as (select name, st_transform(way, 4326) as way from planet_osm_polygon where admin_level='8' or admin_level='10') select distinct polys.name from mcdonalds mc left join polys on st_contains(polys.way, st_transform(mc.wkb_geometry, 4326)) where name is not null and name != 'La Porte'",
+    "state_statistics":"select worker_q.json_build_object from (select ob.name, count(ob.name), ob.obesity, json_build_object('type', 'Feature','geometry', ST_AsGeoJSON(ST_Transform(ST_Centroid(ob.wkb_geometry), 4326))::JSON, 'properties',json_build_object('title', ob.name, 'description', count(ob.name) || '#' || ob.obesity, 'marker-size', 'medium', 'marker-color', '#4169E1')) from mcdonalds mc join states st on st.code = mc.state join obesity ob on upper(ob.name) = st.name group by ob.name, ob.obesity, ob.wkb_geometry) as worker_q",
+    "obesity_per_state":"select  json_build_object('type', 'Feature', 'geometry', ST_AsGeoJSON(ST_Transform(wkb_geometry, 4326))::JSON, 'obesity', obesity, 'properties', json_build_object('fill', '#790084', 'fill-opacity', 0.4))  from obesity",
+    "total_mcdonalds":"select count(*) from mcdonalds",
+    "city_most_mcdonalds":"select city, count(*) from mcdonalds group by city order by count desc limit 1",
+    "city_most_obesity":"select name, obesity from obesity order by obesity desc limit 1",
+    "mcdonalds_in_houstuon_part":"with polys as (select name, st_transform(way, 4326) as way from planet_osm_polygon where admin_level='8' or admin_level='10') select json_build_object('type', 'Feature', 'geometry', ST_AsGeoJSON(ST_Transform(mc.wkb_geometry, 4326))::JSON, 'properties', json_build_object('marker-size', 'medium', 'marker-color', '#af0816')) from mcdonalds mc left join polys on st_contains(polys.way, st_transform(mc.wkb_geometry, 4326)) where name = %s",
+    "find_specific_houston_part":"select json_build_object('type', 'Feature', 'geometry', ST_AsGeoJSON(st_transform(way, 4326))::JSON, 'properties', json_build_object('fill', '#4169E1', 'fill-opacity', 0.4)) from planet_osm_polygon where name = %s"
+}
+
+
+
